@@ -3,3 +3,4 @@ Flask-RESTful
 Flask-JWT
 Flask-SQLAlchemy
 uwsgi
+Werkzeug==2.0.0
