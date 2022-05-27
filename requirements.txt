@@ -4,3 +4,4 @@ Flask-JWT
 Flask-SQLAlchemy
 uwsgi
 Werkzeug==2.0.0
+psycopg2
