@@ -10,7 +10,7 @@ Here are a few of the available endpoints:
 
 **/items**
 
-Request a list of all items that have been added to the API.
+Request a list of all items (products) that have been added to the API.
 
 **/item/\<name\>**
 
