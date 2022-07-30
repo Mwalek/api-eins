@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
 from flask_jwt import JWT
 from flask_cors import CORS
@@ -12,7 +12,7 @@ from resources.store import Store, StoreList
 
 db_url = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres", "postgresql", 1)
@@ -26,8 +26,12 @@ api.add_resource(Store, '/store/<string:name>')
 api.add_resource(Item, '/item/<string:name>') # http://127.0.0.1:5000/item/name
 api.add_resource(ItemList, '/items')
 api.add_resource(StoreList, '/stores/')
-
 api.add_resource(UserRegister, '/register')
+
+@app.route("/")
+def home():
+    """Serve homepage template."""
+    return render_template("index.html")
 
 if __name__ == '__main__':
     from db import db
