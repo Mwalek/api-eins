@@ -10,12 +10,11 @@ from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
-db_url = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
-
 app = Flask(__name__, template_folder='templates')
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres", "postgresql", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'mwalek'
 api = Api(app)
