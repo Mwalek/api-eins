@@ -29,10 +29,9 @@ api.add_resource(UserRegister, '/register')
 
 @app.route("/")
 def home():
-    """Serve homepage template."""
     return render_template("index.html")
 
 if __name__ == '__main__':
     from db import db
     db.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(port=5000, host='0.0.0.0', debug=True)
